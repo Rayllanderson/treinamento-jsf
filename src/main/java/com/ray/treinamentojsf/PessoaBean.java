@@ -1,21 +1,35 @@
 package com.ray.treinamentojsf;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+
+/*
+ * RequestScoped; //morre a cada requisição	
+ * 
+ * ViewScoped; // segunda os dados, os dados são mantidos em tela. 
+ * só morre se for redirecionado / abrir o link novamente. 
+ * 
+ * SessionScoped; // mantida a cada sessão. só morre quando a sessão acabar.
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
 import javax.faces.bean.ManagedBean;
 
-@ManagedBean(name="pessoaBean")
+@ApplicationScoped
+@ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
     private String nome;
-    private String sobrenome;
-    private String nomeCompleto;
 
-    public String getSobrenome() {
-	return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-	this.sobrenome = sobrenome;
-    }
+    private List<String> nomes = new ArrayList<String>();
 
     public String getNome() {
 	return nome;
@@ -25,17 +39,12 @@ public class PessoaBean {
 	this.nome = nome;
     }
 
-    public String getNomeCompleto() {
-	return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-	this.nomeCompleto = nomeCompleto;
-    }
-    
-    public String mostrarNome() {
-	nomeCompleto = nome + " " + sobrenome;
+    public String addNome() {
+	nomes.add(nome);
 	return "";
     }
 
+    public List<String> getNomes() {
+	return nomes;
+    }
 }

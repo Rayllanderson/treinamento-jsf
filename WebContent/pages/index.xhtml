@@ -15,18 +15,16 @@
 	  			<hr></hr>
 	  			Nome:
 	  			<h:inputText id="nome" value="#{pessoaBean.nome}"></h:inputText>
-	  			
 	  			<br/>
-	  			Sobrenome:
-	  			<h:inputText id="sobrenome" value="#{pessoaBean.sobrenome}"></h:inputText>
-	  			
-	  			<br/>
-	  			
-	  			<h:commandButton value="Mostrar Nome" action="#{pessoaBean.mostrarNome}"/>
-	  			
-	  			<br/>
-	  			
-	  			<h:outputLabel style="text-align: center;" id="textHello" value="#{pessoaBean.nomeCompleto}"></h:outputLabel>
+				<h:commandButton action="#{pessoaBean.addNome}" value="Salvar"/>	  
+				<br/>
+				
+				<h:dataTable value="#{pessoaBean.nomes}" var="nome">
+					<h:column>
+						<h:outputText value="#{nome}"/>
+					</h:column>
+				</h:dataTable>				
+							
 	  		</h:form>
 	  </h:body>
 

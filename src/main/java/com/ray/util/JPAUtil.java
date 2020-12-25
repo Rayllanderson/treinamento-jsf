@@ -15,7 +15,7 @@ public class JPAUtil {
     private static void init() {
 	try {
 	    if (factory == null) {
-		factory = Persistence.createEntityManagerFactory("treinamento-hibernate");
+		factory = Persistence.createEntityManagerFactory("treinamento-jsf");
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();

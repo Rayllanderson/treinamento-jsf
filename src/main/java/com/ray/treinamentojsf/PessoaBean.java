@@ -1,10 +1,5 @@
 package com.ray.treinamentojsf;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.faces.bean.ApplicationScoped;
-
 /*
  * @RequestScoped; //morre a cada requisição - padrão
  * 
@@ -19,32 +14,30 @@ import javax.faces.bean.ApplicationScoped;
  * 
  */
 
-
-
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
-@ApplicationScoped
+import com.ray.dao.GenericDao;
+import com.ray.entities.Pessoa;
+
+@ViewScoped
 @ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 
-    private String nome;
-
-    private List<String> nomes = new ArrayList<String>();
-
-    public String getNome() {
-	return nome;
-    }
-
-    public void setNome(String nome) {
-	this.nome = nome;
-    }
-
-    public String addNome() {
-	nomes.add(nome);
+    private Pessoa pessoa = new Pessoa();
+    private GenericDao<Pessoa> dao = new GenericDao<>();
+    
+    public String save() {
+	dao.save(pessoa);
+	pessoa = new Pessoa();
 	return "";
     }
 
-    public List<String> getNomes() {
-	return nomes;
+    public Pessoa getPessoa() {
+	return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+	this.pessoa = pessoa;
     }
 }

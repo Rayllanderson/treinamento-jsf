@@ -14,17 +14,13 @@
 	  			<h:outputLabel style="text-align: center;"> Olá, JSF</h:outputLabel>
 	  			<hr></hr>
 	  			Nome:
-	  			<h:inputText id="nome" value="#{pessoaBean.nome}"></h:inputText>
+	  			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}"></h:inputText>
 	  			<br/>
-				<h:commandButton action="#{pessoaBean.addNome}" value="Salvar"/>	  
-				<br/>
+	  			Email:
+	  			<h:inputText id="email" value="#{pessoaBean.pessoa.email}"></h:inputText>
+	  			<br/>
+	  			<h:commandButton value="Salvar" action="#{pessoaBean.save}"/>
 				
-				<h:dataTable value="#{pessoaBean.nomes}" var="nome">
-					<h:column>
-						<h:outputText value="#{nome}"/>
-					</h:column>
-				</h:dataTable>				
-							
 	  		</h:form>
 	  </h:body>
 

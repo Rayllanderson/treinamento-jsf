@@ -6,14 +6,14 @@ import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 
 /*
- * RequestScoped; //morre a cada requisição	
+ * @RequestScoped; //morre a cada requisição - padrão
  * 
- * ViewScoped; // segunda os dados, os dados são mantidos em tela. 
+ * @ViewScoped; // segunda os dados, os dados são mantidos em tela. 
  * só morre se for redirecionado / abrir o link novamente. 
  * 
- * SessionScoped; // mantida a cada sessão. só morre quando a sessão acabar.
+ * @SessionScoped; // mantida a cada sessão. só morre quando a sessão acabar.
  * 
- * 
+ * @ApplicationScoped - mantida para todos os usuários
  * 
  * 
  * 

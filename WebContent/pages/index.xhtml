@@ -87,6 +87,11 @@
 	        	</p:selectManyMenu>
 	        </div>
 	        
+	          <div class="div-input">
+	        	Ativo:
+	       		 <p:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
+	        </div>
+	        
 	        <h:panelGroup>
 	        	 <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" />
 	             <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />

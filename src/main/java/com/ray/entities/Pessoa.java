@@ -28,6 +28,8 @@ public class Pessoa implements Serializable{
     @Temporal(TemporalType.DATE) //quero apenas a data
     private Date dataNascimento;
 
+    private String [] frameworks;
+    
     public Pessoa() {
     };
 
@@ -99,6 +101,14 @@ public class Pessoa implements Serializable{
 
     public void setSexo(String sexo) {
 	this.sexo = Sexo.valueOf(sexo.toUpperCase());
+    }
+
+    public String [] getFrameworks() {
+	return frameworks;
+    }
+
+    public void setFrameworks(String [] frameworks) {
+	this.frameworks = frameworks;
     }
 
 }

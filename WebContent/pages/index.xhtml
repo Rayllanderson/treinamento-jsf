@@ -79,6 +79,14 @@
 	        	</p:selectOneMenu>
 	        </div>
 	        
+	         <div class="div-input">
+	        	Frameworks:
+	        	<p:selectManyMenu id="framework" value="#{pessoaBean.pessoa.frameworks}"> <!-- esse atributo recebrá um dos valores abaixo -->
+	        		<f:selectItem itemValue="Spring" itemLabel="Spring"/>
+	        		<f:selectItem itemValue="Angular" itemLabel="Angular"/>
+	        	</p:selectManyMenu>
+	        </div>
+	        
 	        <h:panelGroup>
 	        	 <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" />
 	             <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
@@ -86,8 +94,7 @@
 	        </h:panelGroup>
 	        
 	     </p:panelGrid>
-	     
-       
+
         
         <hr></hr>
         

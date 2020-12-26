@@ -52,20 +52,29 @@
         <h:outputLabel style="text-align: center;"> Olá, JSF</h:outputLabel>
         <hr></hr>
 
-        <div class="div-input">
-            Nome:
-            <p:inputText id="nome" value="#{pessoaBean.pessoa.nome}"/>
-        </div>
-
-        <div class="div-input">
-            Email:
-            <p:inputText id="email" value="#{pessoaBean.pessoa.email}"/>
-        </div>
-        <div>
-            <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" style="margin-left: 53px;" />
-            <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
-            <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" />
-        </div>
+		<p:panelGrid columns="2">
+		<f:facet name="header">
+			<h:outputText value="Cadastro em JSF"/>
+		</f:facet>
+	        <div class="div-input">
+	            Nome:
+	            <p:inputText id="nome" value="#{pessoaBean.pessoa.nome}"/>
+	        </div>
+	
+	        <div class="div-input">
+	            Email:
+	            <p:inputText id="email" value="#{pessoaBean.pessoa.email}"/>
+	        </div>
+	        
+	        <h:panelGroup>
+	        	 <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" />
+	             <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
+	             <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" />
+	        </h:panelGroup>
+	        
+	     </p:panelGrid>
+	     
+       
         
         <hr></hr>
         

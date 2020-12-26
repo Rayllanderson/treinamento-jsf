@@ -1,5 +1,8 @@
 package com.ray.treinamentojsf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @RequestScoped; //morre a cada requisição - padrão
  * 
@@ -26,9 +29,11 @@ public class PessoaBean {
 
     private Pessoa pessoa = new Pessoa();
     private GenericDao<Pessoa> dao = new GenericDao<>();
+    private List<Pessoa> pessoas = new ArrayList<>();
     
     public String save() {
 	pessoa = dao.save(pessoa);
+	carregarPessoas();
 	return "";
     }
     
@@ -40,7 +45,12 @@ public class PessoaBean {
     public String remove() {
 	dao.remove(pessoa);
 	novo();
+	carregarPessoas();
 	return "";
+    }
+    
+    public void carregarPessoas() {
+	pessoas = dao.findAll(Pessoa.class);
     }
     
     public Pessoa getPessoa() {
@@ -50,4 +60,10 @@ public class PessoaBean {
     public void setPessoa(Pessoa pessoa) {
 	this.pessoa = pessoa;
     }
+
+    public List<Pessoa> getPessoas() {
+	return pessoas;
+    }
+    
+    
 }

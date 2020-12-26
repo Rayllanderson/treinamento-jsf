@@ -1,5 +1,7 @@
 package com.ray.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -27,6 +29,11 @@ public class GenericDao<T> {
 	transaction.begin();
 	em.remove(entity);
 	transaction.commit();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<T> findAll(Class<T> entity) {
+	return em.createQuery("from " + entity.getCanonicalName()).getResultList();
     }
 
 }

@@ -36,7 +36,13 @@ public class PessoaBean {
 	pessoa = new Pessoa();
 	return "";
     }
-
+    
+    public String remove() {
+	dao.remove(pessoa);
+	novo();
+	return "";
+    }
+    
     public Pessoa getPessoa() {
 	return pessoa;
     }

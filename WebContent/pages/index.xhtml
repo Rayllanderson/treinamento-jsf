@@ -33,6 +33,12 @@
     		border-color: #4cae4c;
 		}
 		
+		.danger{
+			color: #fff;
+		    background-color: #d9534f;
+		    border-color: #d43f3a;
+		}
+		
     </style>
 </h:head>
 
@@ -53,8 +59,14 @@
         </div>
         <div>
             <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" style="margin-left: 53px;" />
-            <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" style="margin-left: 65px;" />
+             <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
+            <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" />
         </div>
+        
+        <div>
+        	
+        </div>
+        
     </h:form>
 </h:body>
 

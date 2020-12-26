@@ -21,5 +21,12 @@ public class GenericDao<T> {
 	transaction.commit();
 	return entity;
     }
+    
+    public void remove(T entity) {
+	EntityTransaction transaction = em.getTransaction();
+	transaction.begin();
+	em.remove(entity);
+	transaction.commit();
+    }
 
 }

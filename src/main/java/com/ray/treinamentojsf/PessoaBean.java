@@ -1,5 +1,6 @@
 package com.ray.treinamentojsf;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +27,10 @@ import com.ray.entities.Pessoa;
 
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
-public class PessoaBean {
+public class PessoaBean implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
     private Pessoa pessoa = new Pessoa();
     private GenericDao<Pessoa> dao = new GenericDao<>();
     private List<Pessoa> pessoas = new ArrayList<>();
@@ -50,7 +53,7 @@ public class PessoaBean {
 	return "";
     }
     
-    @PostConstruct
+    @PostConstruct //carregar ao iniciar
     public void carregarPessoas() {
 	pessoas = dao.findAll(Pessoa.class);
     }

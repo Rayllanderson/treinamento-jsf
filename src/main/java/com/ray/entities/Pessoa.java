@@ -22,6 +22,8 @@ public class Pessoa implements Serializable{
     private String nome;
 
     private String email;
+    
+    private Sexo sexo;
 
     @Temporal(TemporalType.DATE) //quero apenas a data
     private Date dataNascimento;
@@ -89,6 +91,14 @@ public class Pessoa implements Serializable{
     @Override
     public String toString() {
 	return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", dataNascimento=" + dataNascimento + "]";
+    }
+
+    public String getSexo() {
+	return sexo == null ? "" : Sexo.valueOf(this.sexo.getCode()).toString();
+    }
+
+    public void setSexo(String sexo) {
+	this.sexo = Sexo.valueOf(sexo.toUpperCase());
     }
 
 }

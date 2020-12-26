@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.annotation.PostConstruct;
 
 import com.ray.dao.GenericDao;
 import com.ray.entities.Pessoa;
@@ -49,6 +50,7 @@ public class PessoaBean {
 	return "";
     }
     
+    @PostConstruct
     public void carregarPessoas() {
 	pessoas = dao.findAll(Pessoa.class);
     }

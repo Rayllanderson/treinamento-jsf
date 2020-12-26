@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html">
-	  
-	  <h:head>
-	  	<title>Olá JSF</title>		  
-	  </h:head>
-	  
-	  <h:body>
-	  		
-	  		<h:form id="formPessoa">
-	  			
-	  			<h:outputLabel style="text-align: center;"> Olá, JSF</h:outputLabel>
-	  			<hr></hr>
-	  			Nome:
-	  			<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}"></h:inputText>
-	  			<br/>
-	  			Email:
-	  			<h:inputText id="email" value="#{pessoaBean.pessoa.email}"></h:inputText>
-	  			<br/>
-	  			<h:commandButton value="Salvar" action="#{pessoaBean.save}"/>
-				
-	  		</h:form>
-	  </h:body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Olá JSF</title>
+    <style>
+        .div-input {
+            margin: 10px;
+        }
+        
+        .btn{
+	        font-size: 14px;
+	        padding: 4px 8px;
+	        text-decoration: none;
+			text-align: center;
+			cursor: pointer;
+			background-image: none;
+			border: 1px solid transparent;
+			line-height: 1.42857143;
+		  	border-radius: 4px;
+        }
+
+		.primary{
+			color: #fff;
+			background-color: #337ab7;
+		    border-color: #2e6da4;
+		}
+		
+		.success{
+		    color: #fff;
+		    background-color: #5cb85c;
+    		border-color: #4cae4c;
+		}
+		
+    </style>
+</h:head>
+
+<h:body>
+
+    <h:form id="formPessoa">
+        <h:outputLabel style="text-align: center;"> Olá, JSF</h:outputLabel>
+        <hr></hr>
+
+        <div class="div-input">
+            Nome:
+            <h:inputText id="nome" value="#{pessoaBean.pessoa.nome}"></h:inputText>
+        </div>
+
+        <div class="div-input">
+            Email:
+            <h:inputText id="email" value="#{pessoaBean.pessoa.email}"></h:inputText>
+        </div>
+        <div>
+            <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" style="margin-left: 53px;" />
+            <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" style="margin-left: 65px;" />
+        </div>
+    </h:form>
+</h:body>
 
 </html>

@@ -19,7 +19,6 @@ public class GenericDao<T> {
 	transaction.begin();
 	entity = em.merge(entity);
 	transaction.commit();
-	em.close();
 	return entity;
     }
 

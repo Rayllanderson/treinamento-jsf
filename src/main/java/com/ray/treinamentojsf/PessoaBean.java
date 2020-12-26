@@ -28,7 +28,11 @@ public class PessoaBean {
     private GenericDao<Pessoa> dao = new GenericDao<>();
     
     public String save() {
-	dao.save(pessoa);
+	pessoa = dao.save(pessoa);
+	return "";
+    }
+    
+    public String novo() {
 	pessoa = new Pessoa();
 	return "";
     }

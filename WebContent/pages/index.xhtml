@@ -84,8 +84,14 @@
         		</p:column>
         		
         		<p:column headerText="Editar">
-        			 <h:commandLink value="Editar">
+        			 <h:commandLink value="Editar" class="btn primary" style="color:#fff">
         			 	<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"/> <!-- passando pessoa para pessoa do bean -->
+        			 </h:commandLink>
+        		</p:column>
+        		
+        		<p:column headerText="Remover">
+        			 <h:commandLink value="Remover" style="color:#fff" class="btn danger" action="#{pessoaBean.remove}">
+        			 	<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"/> 
         			 </h:commandLink>
         		</p:column>
         	

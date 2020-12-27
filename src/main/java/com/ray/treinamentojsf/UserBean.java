@@ -17,17 +17,17 @@ import com.ray.repository.UserRepository;
 
 @ViewScoped
 @ManagedBean(name = "UserBean")
-public class UserBean implements Serializable{
+public class UserBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     private User user = new User();
     private GenericDao<User> dao = new GenericDao<>();
     private List<User> users = new ArrayList<>();
     private UserRepository userDao = new UserDao();
-    
+
     public String login() {
-	User u =  null;
+	User u = null;
 	u = userDao.login(user.getLogin(), user.getPassword());
 	if (u != null) {
 	    FacesContext context = FacesContext.getCurrentInstance();
@@ -37,37 +37,43 @@ public class UserBean implements Serializable{
 	}
 	return "login.xhtml";
     }
-    
+
+    public String logout() {
+	FacesContext context = FacesContext.getCurrentInstance();
+	ExternalContext externalContext = context.getExternalContext();
+	externalContext.getSessionMap().put("user", null);
+	return "login.xhtml";
+    }
+
     public String novo() {
 	user = new User();
 	return "";
     }
-    
+
     public String save() {
 	user = dao.save(user);
 	carregarUsers();
 	return "";
     }
-    
-    
+
     public String remove() {
 	dao.remove(user);
 	novo();
 	carregarUsers();
 	return "";
     }
-    
-    @PostConstruct //carregar ao iniciar
+
+    @PostConstruct // carregar ao iniciar
     public void carregarUsers() {
 	users = dao.findAll(User.class);
     }
-    
+
     public User getUser() {
-        return user;
+	return user;
     }
 
     public void setUser(User user) {
-        this.user = user;
+	this.user = user;
     }
 
     public List<User> getUsers() {
@@ -77,6 +83,5 @@ public class UserBean implements Serializable{
     public void setUsers(List<User> users) {
 	this.users = users;
     }
-    
-    
+
 }

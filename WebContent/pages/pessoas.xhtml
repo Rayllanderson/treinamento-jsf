@@ -54,12 +54,14 @@
         		value="https://pbs.twimg.com/profile_images/1352023473/jsf-logo-no-text_400x400.png"
         		width="35" height="35"/>
         </h2>
-         <a href="user.xhtml">user's</a>
+         <p style="text-align: center">Página de cadastro de pessoas</p>
+         <p:commandButton onclick="window.location = 'user.xhtml'" value="User's"/>
+         <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
         <hr></hr>
 
 		<p:panelGrid columns="2">
 		<f:facet name="header">
-			<h:outputText value="Cadastro em JSF"/>
+			<h:outputText value="Cadastro de Pessoas"/>
 		</f:facet>
 	        <div class="div-input">
 	            Nome:

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Login</title>
+    
+    <style>
+        .div-input {
+            margin: 10px;
+        }
+        
+        .btn{
+	        font-size: 14px;
+	        padding: 4px 8px;
+	        text-decoration: none;
+			text-align: center;
+			cursor: pointer;
+			background-image: none;
+			border: 1px solid transparent;
+			line-height: 1.42857143;
+		  	border-radius: 4px;
+        }
+
+		.primary{
+			color: #fff;
+			background-color: #337ab7;
+		    border-color: #2e6da4;
+		}
+		
+		.success{
+		    color: #fff;
+		    background-color: #5cb85c;
+    		border-color: #4cae4c;
+		}
+		
+		.danger{
+			color: #fff;
+		    background-color: #d9534f;
+		    border-color: #d43f3a;
+		}
+		
+    </style>
+</h:head>
+
+<h:body>
+        
+      	<div style="margin: auto; display:flex; transform: translateY(100%); justify-content:center;">
+	        <h:form id="formUser" >   
+				<p:panelGrid columns="2">
+				<f:facet name="header">
+					<h:outputText value="Login"/>
+				</f:facet>
+				
+					<div class="div-input">
+						Login:
+				        <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+				       	<p:inputText id="login" value="#{UserBean.user.login}"/>  
+					</div>
+						        
+			         <div class="div-input">
+			            Senha:
+			            <span class="ui-inputgroup-addon"> <i class="pi pi-lock"></i> </span>
+			            <p:password id="password" value="#{UserBean.user.password}"/>
+			        </div>
+			        
+			        <h:panelGroup>
+			        	<h:commandButton class="btn primary" value="Login" action="#{UserBean.login}" />
+			        </h:panelGroup>
+			     </p:panelGrid>
+    		</h:form>
+       </div>
+
+</h:body>
+
+</html>

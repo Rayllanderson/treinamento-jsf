@@ -1,5 +1,6 @@
 package com.ray.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,8 +8,9 @@ import javax.persistence.EntityTransaction;
 
 import com.ray.util.JPAUtil;
 
-public class GenericDao<T> {
+public class GenericDao<T> implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     private EntityManager em = JPAUtil.getEntityManager();
 
     /**

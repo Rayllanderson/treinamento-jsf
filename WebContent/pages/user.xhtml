@@ -6,7 +6,7 @@
  xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Olá JSF</title>
+    <title>Cadastro de usuário</title>
     
     <style>
         .div-input {
@@ -48,54 +48,50 @@
 
 <h:body>
 
-    <h:form id="formPessoa">
         <h2 style="text-align: center">Olá, JSF 
         	<h:graphicImage 
         		value="https://pbs.twimg.com/profile_images/1352023473/jsf-logo-no-text_400x400.png"
         		width="35" height="35"/>
         </h2>
-         
+         <a href="pessoas.xhtml">pessoas</a>
         <hr></hr>
-
+        
+        <h:form id="formUser">   
 		<p:panelGrid columns="2">
 		<f:facet name="header">
 			<h:outputText value="Cadastro em JSF"/>
 		</f:facet>
+		
 	        <div class="div-input">
 	            Nome:
-	            <p:inputText id="nome" value="#{pessoaBean.pessoa.nome}"/>
+	            <p:inputText id="nome" value="#{UserBean.user.nome}"/>
 	        </div>
 	
-	        <div class="div-input">
-	            Email:
-	            <p:inputText id="email" value="#{pessoaBean.pessoa.email}"/>
+			<div class="div-input">
+					Login:
+		            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+		       	  	<p:inputText id="login" value="#{UserBean.user.login}"/>  
+			</div>
+				        
+	         <div class="div-input">
+	            Senha:
+	            <span class="ui-inputgroup-addon"> <i class="pi pi-lock"></i> </span>
+	            <p:password id="password" value="#{UserBean.user.password}"/>
 	        </div>
 	        
 	        <div class="div-input">
-	        	Sexo:
-	        	<p:selectOneMenu id="sexo" value="#{pessoaBean.pessoa.sexo}"> <!-- esse atributo recebrá um dos valores abaixo -->
-	        		<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
-	        		<f:selectItem itemLabel="Feminino" itemValue="feminino"/>
+	        	Perfil:
+	        	<p:selectOneMenu id="perfil" value="#{UserBean.user.perfil}"> <!-- esse atributo recebrá um dos valores abaixo -->
+	        		<f:selectItem itemLabel="administrador" itemValue="Administrador"/>
+	        		<f:selectItem itemLabel="secretario" itemValue="Secretário"/>
+	        		<f:selectItem itemLabel="recepcionista" itemValue="Recepcionista"/>
 	        	</p:selectOneMenu>
 	        </div>
 	        
-	         <div class="div-input">
-	        	Frameworks:
-	        	<p:selectManyMenu id="framework" value="#{pessoaBean.pessoa.frameworks}"> <!-- esse atributo recebrá um dos valores abaixo -->
-	        		<f:selectItem itemValue="Spring" itemLabel="Spring"/>
-	        		<f:selectItem itemValue="Angular" itemLabel="Angular"/>
-	        	</p:selectManyMenu>
-	        </div>
-	        
-	          <div class="div-input">
-	        	Ativo:
-	       		 <p:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
-	        </div>
-	        
 	        <h:panelGroup>
-	        	 <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" />
-	             <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
-	             <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" />
+	        	 <h:commandButton class="btn primary" value="Novo " action="#{UserBean.novo}" />
+	             <h:commandButton class="btn danger" value="Remover" action="#{UserBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
+	             <h:commandButton class="btn success" value="Salvar " action="#{UserBean.save}" />
 	        </h:panelGroup>
 	        
 	     </p:panelGrid>
@@ -104,33 +100,33 @@
         <hr></hr>
         
         <div>
-        	<p:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
+        	<p:dataTable value="#{UserBean.users}" var="user">
         		<p:column headerText="Id">
-        			<h:outputText value="#{pessoa.id}"/>
+        			<h:outputText value="#{user.id}"/>
         		</p:column>
         		
         		<p:column headerText="Nome">
-        			<h:outputText value="#{pessoa.nome}"/>
+        			<h:outputText value="#{user.nome}"/>
+        		</p:column>
+        		        		
+        		<p:column headerText="Login">
+        			<h:outputText value="#{user.login}"/>
         		</p:column>
         		
-        		<p:column headerText="Email">
-        			<h:outputText value="#{pessoa.email}"/>
+        		<p:column headerText="Perfil">
+        			<h:outputText value="#{user.perfil}"/>
         		</p:column>
-        		
-        		<p:column headerText="Sexo">
-        			<h:outputText value="#{pessoa.sexo}"/>
-        		</p:column>
-        		
+
         		<p:column headerText="Editar">
         			 <h:commandLink style="color:#fff">
-        			 	<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"/> <!-- passando pessoa para pessoa do bean -->
+        			 	<f:setPropertyActionListener value="#{user}" target="#{UserBean.user}"/> <!-- passando user para user do bean -->
         			 	<h:graphicImage value="https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png" width="32" height="32"/>
         			 </h:commandLink>
         		</p:column>
         		
         		<p:column headerText="Remover">
-        			 <h:commandLink style="color:#fff"  action="#{pessoaBean.remove}">
-        			 	<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"/> 
+        			 <h:commandLink style="color:#fff"  action="#{UserBean.remove}">
+        			 	<f:setPropertyActionListener value="#{user}" target="#{UserBean.user}"/> 
         			 	<h:graphicImage value="https://img.icons8.com/cotton/2x/delete-sign--v2.png" width="32" height="32"/>
         			 </h:commandLink>
         		</p:column>

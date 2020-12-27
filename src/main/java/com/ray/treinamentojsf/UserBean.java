@@ -7,9 +7,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import com.ray.dao.GenericDao;
 import com.ray.entities.User;
+import com.ray.impl.UserDao;
+import com.ray.repository.UserRepository;
 
 @ViewScoped
 @ManagedBean(name = "UserBean")
@@ -20,11 +24,18 @@ public class UserBean implements Serializable{
     private User user = new User();
     private GenericDao<User> dao = new GenericDao<>();
     private List<User> users = new ArrayList<>();
+    private UserRepository userDao = new UserDao();
     
-    public String save() {
-	user = dao.save(user);
-	carregarPessoas();
-	return "";
+    public String login() {
+	User u =  null;
+	u = userDao.login(user.getLogin(), user.getPassword());
+	if (u != null) {
+	    FacesContext context = FacesContext.getCurrentInstance();
+	    ExternalContext externalContext = context.getExternalContext();
+	    externalContext.getSessionMap().put("user", u);
+	    return "pessoas.xhtml";
+	}
+	return "login.xhtml";
     }
     
     public String novo() {
@@ -32,15 +43,22 @@ public class UserBean implements Serializable{
 	return "";
     }
     
+    public String save() {
+	user = dao.save(user);
+	carregarUsers();
+	return "";
+    }
+    
+    
     public String remove() {
 	dao.remove(user);
 	novo();
-	carregarPessoas();
+	carregarUsers();
 	return "";
     }
     
     @PostConstruct //carregar ao iniciar
-    public void carregarPessoas() {
+    public void carregarUsers() {
 	users = dao.findAll(User.class);
     }
     

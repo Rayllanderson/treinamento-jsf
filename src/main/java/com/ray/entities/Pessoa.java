@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.ray.entities.enums.Sexo;
+
 @Entity
 public class Pessoa implements Serializable{
     

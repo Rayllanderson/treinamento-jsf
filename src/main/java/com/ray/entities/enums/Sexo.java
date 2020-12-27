@@ -1,4 +1,4 @@
-package com.ray.entities;
+package com.ray.entities.enums;
 
 
 public enum Sexo {

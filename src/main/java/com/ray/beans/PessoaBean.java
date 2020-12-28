@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+
 /*
  * @RequestScoped; //morre a cada requisição - padrão
  * 
@@ -20,6 +22,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.annotation.PostConstruct;
 
 import com.ray.dao.GenericDao;
@@ -38,6 +41,7 @@ public class PessoaBean implements Serializable{
     public String save() {
 	pessoa = dao.save(pessoa);
 	carregarPessoas();
+	showMessage("Sucesso!");
 	return "";
     }
     
@@ -50,6 +54,7 @@ public class PessoaBean implements Serializable{
 	dao.remove(pessoa);
 	novo();
 	carregarPessoas();
+	showMessage("Removido com sucesso!");
 	return "";
     }
     
@@ -70,5 +75,10 @@ public class PessoaBean implements Serializable{
 	return pessoas;
     }
     
+    private void showMessage(String msg) {
+	FacesContext context = FacesContext.getCurrentInstance();
+	FacesMessage message = new FacesMessage(msg);
+	context.addMessage(null, message);
+    }
     
 }

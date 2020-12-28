@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -33,8 +34,10 @@ public class UserBean implements Serializable {
 	    FacesContext context = FacesContext.getCurrentInstance();
 	    ExternalContext externalContext = context.getExternalContext();
 	    externalContext.getSessionMap().put("user", u);
+	    showMessage("Welcome!");
 	    return "pessoas.xhtml";
 	}
+	showMessage("User ou senha inválidos!");
 	return "login.xhtml";
     }
 
@@ -42,6 +45,7 @@ public class UserBean implements Serializable {
 	FacesContext context = FacesContext.getCurrentInstance();
 	ExternalContext externalContext = context.getExternalContext();
 	externalContext.getSessionMap().put("user", null);
+	showMessage("Adeus");
 	return "login.xhtml";
     }
     
@@ -60,6 +64,7 @@ public class UserBean implements Serializable {
     public String save() {
 	user = dao.save(user);
 	carregarUsers();
+	showMessage("Sucesso!");
 	return "";
     }
 
@@ -67,6 +72,7 @@ public class UserBean implements Serializable {
 	dao.remove(user);
 	novo();
 	carregarUsers();
+	showMessage("Removido com sucesso!");
 	return "";
     }
 
@@ -89,6 +95,12 @@ public class UserBean implements Serializable {
 
     public void setUsers(List<User> users) {
 	this.users = users;
+    }
+    
+    private void showMessage(String msg) {
+	FacesContext context = FacesContext.getCurrentInstance();
+	FacesMessage message = new FacesMessage(msg);
+	context.addMessage(null, message);
     }
     
 }

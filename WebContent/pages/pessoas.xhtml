@@ -63,6 +63,7 @@
          <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
         <hr></hr>
 
+<p:messages/>
 		<p:panelGrid columns="2" rendered="#{UserBean.permiteAcesso('administrador')}">
 		<f:facet name="header">
 			<h:outputText value="Cadastro de Pessoas" />

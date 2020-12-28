@@ -29,7 +29,7 @@ public class GenericDao<T> implements Serializable{
     public void remove(T entity) {
 	EntityTransaction transaction = em.getTransaction();
 	transaction.begin();
-	em.remove(entity);
+	em.remove(em.contains(entity) ? entity : em.merge(entity));
 	transaction.commit();
     }
     

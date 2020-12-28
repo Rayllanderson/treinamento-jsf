@@ -55,13 +55,13 @@
         		width="35" height="35"/>
         </h2>
          <p style="text-align: center">Página de cadastro de pessoas</p>
-         <p:commandButton onclick="window.location = 'user.xhtml'" value="User's"/>
+         <p:commandButton onclick="window.location = 'user.xhtml'" value="User's" rendered="#{UserBean.permiteAcesso('administrador')}"/>
          <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
         <hr></hr>
 
-		<p:panelGrid columns="2">
+		<p:panelGrid columns="2" rendered="#{UserBean.permiteAcesso('administrador')}">
 		<f:facet name="header">
-			<h:outputText value="Cadastro de Pessoas"/>
+			<h:outputText value="Cadastro de Pessoas" />
 		</f:facet>
 	        <div class="div-input">
 	            Nome:
@@ -123,15 +123,15 @@
         			<h:outputText value="#{pessoa.sexo}"/>
         		</p:column>
         		
-        		<p:column headerText="Editar">
+        		<p:column headerText="Editar" rendered="#{UserBean.permiteAcesso('administrador')}">
         			 <h:commandLink style="color:#fff">
         			 	<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"/> <!-- passando pessoa para pessoa do bean -->
         			 	<h:graphicImage value="https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png" width="32" height="32"/>
         			 </h:commandLink>
         		</p:column>
         		
-        		<p:column headerText="Remover">
-        			 <h:commandLink style="color:#fff"  action="#{pessoaBean.remove}">
+        		<p:column headerText="Remover" rendered="#{UserBean.permiteAcesso('administrador')}">
+        			 <h:commandLink style="color:#fff"  action="#{pessoaBean.remove}"  >
         			 	<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}"/> 
         			 	<h:graphicImage value="https://img.icons8.com/cotton/2x/delete-sign--v2.png" width="32" height="32"/>
         			 </h:commandLink>

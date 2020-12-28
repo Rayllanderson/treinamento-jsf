@@ -44,6 +44,13 @@ public class UserBean implements Serializable {
 	externalContext.getSessionMap().put("user", null);
 	return "login.xhtml";
     }
+    
+    public boolean permiteAcesso(String perfil) {
+	FacesContext context = FacesContext.getCurrentInstance();
+	ExternalContext externalContext = context.getExternalContext();
+	User user = (User) externalContext.getSessionMap().get("user");
+	return user.getPerfil().equalsIgnoreCase(perfil);
+    }
 
     public String novo() {
 	user = new User();
@@ -83,5 +90,5 @@ public class UserBean implements Serializable {
     public void setUsers(List<User> users) {
 	this.users = users;
     }
-
+    
 }

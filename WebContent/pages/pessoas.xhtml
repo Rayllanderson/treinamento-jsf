@@ -48,14 +48,18 @@
 
 <h:body>
 
-    <h:form id="formPessoa">
+
+   
         <h2 style="text-align: center">Olá, JSF 
         	<h:graphicImage 
         		value="https://pbs.twimg.com/profile_images/1352023473/jsf-logo-no-text_400x400.png"
         		width="35" height="35"/>
         </h2>
          <p style="text-align: center">Página de cadastro de pessoas</p>
+         
+          <h:form id="formPessoa">
          <p:commandButton onclick="window.location = 'user.xhtml'" value="User's" rendered="#{UserBean.permiteAcesso('administrador')}"/>
+         <p:commandButton onclick="window.location = 'lancamentos.xhtml'" value="Lançamentos" />
          <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
         <hr></hr>
 

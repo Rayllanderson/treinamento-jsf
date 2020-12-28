@@ -8,6 +8,7 @@
 	
 	<class>com.ray.entities.Pessoa</class>
 	<class>com.ray.entities.User</class>
+	<class>com.ray.entities.Lancamento</class>
 		
 		<properties>
 			

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.ray.entities.User;
 import com.ray.util.JPAUtil;
 
-@WebFilter(urlPatterns = { "/pages/pessoas.xhtml", "/pages/user.xhtml", "/UserBean/*", "/pessoaBean/*" }) //
+@WebFilter(urlPatterns = { "/pages/pessoas.xhtml", "/pages/user.xhtml", "/UserBean/*", "/pessoaBean/*", "/lancamentosBean/*", "/pages/lancamentos.xhtml" }) //
 public class FilterAutenticacao implements Filter {
 
     @Override

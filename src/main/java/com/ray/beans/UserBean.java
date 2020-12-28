@@ -1,4 +1,4 @@
-package com.ray.treinamentojsf;
+package com.ray.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;

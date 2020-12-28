@@ -1,9 +1,13 @@
 package com.ray.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.ray.entities.enums.Perfil;
 
@@ -17,7 +21,10 @@ public class User {
     private String login;
     private String password;
     private Perfil perfil;
-
+    
+    @OneToMany(mappedBy = "user")
+    private List <Lancamento> lancamentos = new ArrayList<>();
+    
     public User() {
 	super();
     }

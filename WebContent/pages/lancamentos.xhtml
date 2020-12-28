@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Olá JSF</title>
+    
+    <style>
+        .div-input {
+            margin: 10px;
+        }
+        
+        .btn{
+	        font-size: 14px;
+	        padding: 4px 8px;
+	        text-decoration: none;
+			text-align: center;
+			cursor: pointer;
+			background-image: none;
+			border: 1px solid transparent;
+			line-height: 1.42857143;
+		  	border-radius: 4px;
+        }
+
+		.primary{
+			color: #fff;
+			background-color: #337ab7;
+		    border-color: #2e6da4;
+		}
+		
+		.success{
+		    color: #fff;
+		    background-color: #5cb85c;
+    		border-color: #4cae4c;
+		}
+		
+		.danger{
+			color: #fff;
+		    background-color: #d9534f;
+		    border-color: #d43f3a;
+		}
+		
+    </style>
+</h:head>
+
+<h:body>
+         <p style="text-align: center">Página de lançamentos</p>
+         
+          <h:form id="formLancamentos">
+	         <p:commandButton onclick="window.location = 'user.xhtml'" value="User's" rendered="#{UserBean.permiteAcesso('administrador')}"/>
+	         <p:commandButton onclick="window.location = 'pessoas.xhtml'" value="Pessoas"/>
+	         <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
+	        <hr></hr>
+	        
+	        <p:panelGrid columns="2">
+		<f:facet name="header">
+			<h:outputText value="Cadastro de Lançamentos" />
+		</f:facet>
+	        <div class="div-input">
+	            Nota Fiscal:
+	            <p:inputText id="nome" value="#{lancamentosBean.lancamento.numeroNotaFiscal}"/>
+	        </div>
+	
+	        <div class="div-input">
+	            Empresa de Origem:
+	            <p:inputText id="origem" value="#{lancamentosBean.lancamento.empresaOrigem}"/>
+	        </div>
+	        
+	        <div class="div-input">
+	        	 Empresa de Destino:
+	            <p:inputText id="destino" value="#{lancamentosBean.lancamento.empresaDestino}"/>
+	        </div>
+	        
+	        <h:panelGroup>
+	        	 <h:commandButton class="btn primary" value="Novo " action="#{lancamentosBean.novo}" />
+	             <h:commandButton class="btn danger" value="Remover" action="#{lancamentosBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
+	             <h:commandButton class="btn success" value="Salvar " action="#{lancamentosBean.save}" />
+	        </h:panelGroup>
+	        
+	     </p:panelGrid>
+
+        
+        <hr></hr>
+        
+        <div>
+        	<p:dataTable value="#{lancamentosBean.lancamentos}" var="lancamento">
+        		<p:column headerText="Id">
+        			<h:outputText value="#{lancamento.id}"/>
+        		</p:column>
+        		
+        		<p:column headerText="Nt. Fiscal">
+        			<h:outputText value="#{lancamento.numeroNotaFiscal}"/>
+        		</p:column>
+        		
+        		<p:column headerText="Emp. Origem">
+        			<h:outputText value="#{lancamento.empresaOrigem}"/>
+        		</p:column>
+        		
+        		<p:column headerText="Emp. Destino">
+        			<h:outputText value="#{lancamento.empresaDestino}"/>
+        		</p:column>
+        		
+        		<p:column headerText="Editar">
+        			 <h:commandLink style="color:#fff">
+        			 	<f:setPropertyActionListener value="#{lancamento}" target="#{lancamentosBean.lancamento}"/> 
+        			 	<h:graphicImage value="https://upload.wikimedia.org/wikipedia/en/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/1024px-OOjs_UI_icon_edit-ltr-progressive.svg.png" width="32" height="32"/>
+        			 </h:commandLink>
+        		</p:column>
+        		
+        		<p:column headerText="Remover" >
+        			 <h:commandLink style="color:#fff"  action="#{lancamentosBean.remove}"  >
+        			 	<f:setPropertyActionListener value="#{lancamento}" target="#{lancamentosBean.lancamento}"/> 
+        			 	<h:graphicImage value="https://img.icons8.com/cotton/2x/delete-sign--v2.png" width="32" height="32"/>
+        			 </h:commandLink>
+        		</p:column>
+        	
+        	</p:dataTable>
+        </div>
+        
+  		  </h:form>
+</h:body>
+
+</html>

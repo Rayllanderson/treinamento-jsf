@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
  xmlns:h="http://java.sun.com/jsf/html"
  xmlns:f="http://java.sun.com/jsf/core"
- xmlns:p="http://primefaces.org/ui">
+ xmlns:p="http://primefaces.org/ui"
+ xmlns:ui = "http://java.sun.com/jsf/facelets">
 
 <h:head>
     <title>Cadastro de usuário</title>
@@ -54,9 +55,7 @@
         		width="35" height="35"/>
         </h2>
         <p style="text-align: center">Página de cadastro de usuários</p>
-         <p:commandButton onclick="window.location ='pessoas.xhtml'" value="Pessoas"/>
-         <p:commandButton onclick="window.location = 'lancamentos.xhtml'" value="Lançamentos"/>
-         <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
+         <ui:include src="menu.xhtml"/>
         <hr></hr>
         
         <p:messages/>

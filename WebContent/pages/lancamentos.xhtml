@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
  xmlns:h="http://java.sun.com/jsf/html"
  xmlns:f="http://java.sun.com/jsf/core"
- xmlns:p="http://primefaces.org/ui">
+ xmlns:p="http://primefaces.org/ui"
+ xmlns:ui = "http://java.sun.com/jsf/facelets">
 
 <h:head>
     <title>Olá JSF</title>
@@ -50,9 +51,7 @@
          <p style="text-align: center">Página de lançamentos</p>
          
           <h:form id="formLancamentos">
-	         <p:commandButton onclick="window.location = 'user.xhtml'" value="User's" rendered="#{UserBean.permiteAcesso('administrador')}"/>
-	         <p:commandButton onclick="window.location = 'pessoas.xhtml'" value="Pessoas"/>
-	         <p:commandButton action="#{UserBean.logout}" value="Logout" style="float: right;"/>
+	        <ui:include src="menu.xhtml"/>
 	        <hr></hr>
 	        <p:messages/>
 	        <p:panelGrid columns="2">

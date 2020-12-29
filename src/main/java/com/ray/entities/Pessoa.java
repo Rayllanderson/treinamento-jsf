@@ -28,7 +28,7 @@ public class Pessoa implements Serializable{
     private Sexo sexo;
 
     @Temporal(TemporalType.DATE) //quero apenas a data
-    private Date dataNascimento;
+    private Date dataNascimento = new Date();
 
     private String [] frameworks;
     

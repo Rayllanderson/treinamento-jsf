@@ -85,6 +85,13 @@
 	        	</p:selectOneMenu>
 	        </div>
 	        
+	        <div class="div-input">
+	        	Nascimento:
+	        	<p:inputText value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="data de nascimento inválida: dd/mm/aaaa">
+	        		<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-3:00"/>
+	        	</p:inputText>
+	        </div>
+	        
 	         <div class="div-input">
 	        	Frameworks:
 	        	<p:selectManyMenu id="framework" value="#{pessoaBean.pessoa.frameworks}"> <!-- esse atributo recebrá um dos valores abaixo -->

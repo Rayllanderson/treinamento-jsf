@@ -17,7 +17,7 @@ public class EstadoDao implements EstadoRepository{
     @Override
     public List<SelectItem> estados() {
 	@SuppressWarnings("unchecked")
-	List<Estado> estados = em.createNativeQuery("from estados").getResultList();
+	List<Estado> estados = em.createQuery("from Estado").getResultList();
 	List<SelectItem> selectItems = new ArrayList<>();
 	//passando o objeto inteiro, e o que mostrará pro user (select item) é apenas o nome
 	estados.forEach(x -> selectItems.add(new SelectItem(x, x.getNome()))); 

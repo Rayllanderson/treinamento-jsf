@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
-import com.google.gson.annotations.SerializedName;
 import com.ray.entities.enums.Sexo;
 
 @Entity
@@ -37,12 +37,19 @@ public class Pessoa implements Serializable{
     
     private String cep;
     
-    
     private String cidade;
     
-    @SerializedName(value = "uf")
-    private String estado;
+    @Transient //não vai pro banco de dados / nao grava
+    private Estado estado;
     
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
     public String getCidade() {
         return cidade;
     }
@@ -51,13 +58,7 @@ public class Pessoa implements Serializable{
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return estado;
-    }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     public Pessoa() {
     };

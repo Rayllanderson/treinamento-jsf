@@ -113,7 +113,9 @@
 	        
 		     <div class="div-input">
 	        	Estado:
-	        	<p:inputText value="#{pessoaBean.pessoa.estado}" id="estado"/>
+	        	<p:selectOneMenu id="estad" value="#{pessoaBean.pessoa.estado}"> <!-- esse atributo recebrá um dos valores abaixo -->
+	        		<f:selectItems value="#{pessoaBean.estados}"/>
+	        	</p:selectOneMenu>
 	        </div>
 	        
 	         <div class="div-input">

@@ -69,7 +69,10 @@
 		</f:facet>
 	        <div class="div-input">
 	            Nome:
-	            <p:inputText id="nome" value="#{pessoaBean.pessoa.nome}"/>
+	            <p:inputText id="nome" value="#{pessoaBean.pessoa.nome}" required="true" requiredMessage="Informe o nome"
+	            validatorMessage="Nome tem que ter no mínimo 3 e no máximo 50 caracteres">
+	            	<f:validateLength minimum="3" maximum="50"/>
+	            </p:inputText>
 	        </div>
 	
 	        <div class="div-input">
@@ -91,10 +94,27 @@
 	        		<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-3:00"/>
 	        	</p:inputText>
 	        </div>
+	        	        
+	        <div class="div-input">
+	        	CEP:
+	        	<p:inputText value="#{pessoaBean.pessoa.cep}">
+	        		<f:ajax event="blur" execute="@this" listener="#{pessoaBean.pesquisaCep}" render="estado cidade"/>
+	        	</p:inputText>
+	        </div>
+	        
+	        <div class="div-input">
+	        	Cidade:
+	        	<p:inputText value="#{pessoaBean.pessoa.cidade}" id="cidade" />
+	        </div>
+	        
+		     <div class="div-input">
+	        	Estado:
+	        	<p:inputText value="#{pessoaBean.pessoa.estado}" id="estado"/>
+	        </div>
 	        
 	         <div class="div-input">
 	        	Frameworks:
-	        	<p:selectManyMenu id="framework" value="#{pessoaBean.pessoa.frameworks}"> <!-- esse atributo recebrá um dos valores abaixo -->
+	        	<p:selectManyMenu id="framework" value="#{pessoaBean.pessoa.frameworks}"> <!-- esse atributo recebrá um dos valores abaixo-->
 	        		<f:selectItem itemValue="Spring" itemLabel="Spring"/>
 	        		<f:selectItem itemValue="Angular" itemLabel="Angular"/>
 	        	</p:selectManyMenu>
@@ -106,7 +126,9 @@
 	        </div>
 	        
 	        <h:panelGroup>
-	        	 <h:commandButton class="btn primary" value="Novo " action="#{pessoaBean.novo}" />
+	        	 <h:commandButton class="btn primary" value="Novo " id="new" action="#{pessoaBean.novo}">
+	        	 	<f:ajax execute="new" render="@form"/>
+	        	 </h:commandButton>
 	             <h:commandButton class="btn danger" value="Remover" action="#{pessoaBean.remove}" style="margin-left: 2px; margin-right: 2px;" />
 	             <h:commandButton class="btn success" value="Salvar " action="#{pessoaBean.save}" />
 	        </h:panelGroup>
@@ -115,7 +137,9 @@
 
         
         <hr></hr>
+        </h:form>
         
+        <h:form>
         <div>
         	<p:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
         		<p:column headerText="Id">

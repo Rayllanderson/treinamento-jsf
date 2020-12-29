@@ -1,6 +1,11 @@
 package com.ray.beans;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +28,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.annotation.PostConstruct;
 
+import com.google.gson.Gson;
 import com.ray.dao.GenericDao;
 import com.ray.entities.Pessoa;
 
@@ -81,4 +88,31 @@ public class PessoaBean implements Serializable{
 	context.addMessage(null, message);
     }
     
+    public void pesquisaCep(AjaxBehaviorEvent e) {
+	try {
+	    String param = pessoa.getCep();
+	    String urlStr = "https://viacep.com.br/ws/" + param +"/json/";
+	    URL url = new URL(urlStr);
+	    URLConnection connection = url.openConnection();
+	    InputStream is = connection.getInputStream();
+	    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+	    String cep = "";
+	    StringBuilder jsonCep = new StringBuilder();
+	    while((cep = bufferedReader.readLine()) != null) {
+		jsonCep.append(cep);
+	    }
+	    System.out.println("hey..");
+	    //setar atrbibutos de endereco... avenida, complemento, logradouro, bairro, enfim. como? bem... assim:
+	    // gsonAux irá setar os atributos de acordo com o json automaticamente, dai só passar pra classe pessoa
+	    Pessoa gsonAux = new Gson().fromJson(jsonCep.toString(), Pessoa.class);
+	    this.pessoa.setEstado(gsonAux.getEstado());
+	    this.pessoa.setCidade(gsonAux.getCidade());
+	    System.out.println(gsonAux.getEstado());
+	    System.out.println(pessoa.getCidade());
+	    
+	}catch (Exception ex) {
+	    ex.printStackTrace();
+	    showMessage("erro ao consultar o cep");
+	}
+    }
 }

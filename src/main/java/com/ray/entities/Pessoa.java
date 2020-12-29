@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.google.gson.annotations.SerializedName;
 import com.ray.entities.enums.Sexo;
 
 @Entity
@@ -34,6 +35,30 @@ public class Pessoa implements Serializable{
     
     private boolean ativo;
     
+    private String cep;
+    
+    @SerializedName(value = "localidade")
+    private String cidade;
+    
+    @SerializedName(value = "uf")
+    private String estado;
+    
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public Pessoa() {
     };
 
@@ -121,6 +146,14 @@ public class Pessoa implements Serializable{
 
     public void setAtivo(boolean ativo) {
 	this.ativo = ativo;
+    }
+
+    public String getCep() {
+	return cep;
+    }
+
+    public void setCep(String cep) {
+	this.cep = cep;
     }
 
 }

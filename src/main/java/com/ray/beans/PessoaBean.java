@@ -29,11 +29,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.model.SelectItem;
 import javax.annotation.PostConstruct;
 
 import com.google.gson.Gson;
 import com.ray.dao.GenericDao;
 import com.ray.entities.Pessoa;
+import com.ray.impl.EstadoDao;
+import com.ray.repository.EstadoRepository;
 
 @ViewScoped
 @ManagedBean(name = "pessoaBean")
@@ -44,6 +47,8 @@ public class PessoaBean implements Serializable{
     private Pessoa pessoa = new Pessoa();
     private GenericDao<Pessoa> dao = new GenericDao<>();
     private List<Pessoa> pessoas = new ArrayList<>();
+    private List<SelectItem> estados;
+    private EstadoRepository estadoDao = new EstadoDao();
     
     public String save() {
 	pessoa = dao.save(pessoa);
@@ -112,5 +117,14 @@ public class PessoaBean implements Serializable{
 	    ex.printStackTrace();
 	    showMessage("erro ao consultar o cep");
 	}
+    }
+
+    public List<SelectItem> getEstados() {
+	estados = estadoDao.estados();
+	return estados;
+    }
+
+    public void setEstados(List<SelectItem> estados) {
+	this.estados = estados;
     }
 }

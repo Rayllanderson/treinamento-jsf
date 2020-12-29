@@ -58,8 +58,12 @@
         </h2>
          <p style="text-align: center">Página de cadastro de pessoas</p>
          
+         <h:form>
+        	 <ui:include src="menu.xhtml"/>
+         </h:form>
+         
           <h:form id="formPessoa">
-        	<ui:include src="menu.xhtml"/>
+        	
         <hr></hr>
 
 <p:messages/>
@@ -70,14 +74,14 @@
 	        <div class="div-input">
 	            Nome:
 	            <p:inputText id="nome" value="#{pessoaBean.pessoa.nome}" required="true" requiredMessage="Informe o nome"
-	            validatorMessage="Nome tem que ter no mínimo 3 e no máximo 50 caracteres">
+	            validatorMessage="Nome tem que ter no mínimo 3 e no máximo 50 caracteres" placeholder="Informe o nome">
 	            	<f:validateLength minimum="3" maximum="50"/>
 	            </p:inputText>
 	        </div>
 	
 	        <div class="div-input">
 	            Email:
-	            <p:inputText id="email" value="#{pessoaBean.pessoa.email}"/>
+	            <p:inputText id="email" value="#{pessoaBean.pessoa.email}" placeholder="whatever@email.com"/>
 	        </div>
 	        
 	        <div class="div-input">
@@ -90,7 +94,7 @@
 	        
 	        <div class="div-input">
 	        	Nascimento:
-	        	<p:inputText value="#{pessoaBean.pessoa.dataNascimento}" converterMessage="data de nascimento inválida: dd/mm/aaaa">
+	        	<p:inputText value="#{pessoaBean.pessoa.dataNascimento}" placeholder="dd/mm/aaaa" converterMessage="data de nascimento inválida: dd/mm/aaaa">
 	        		<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="GMT-3:00"/>
 	        	</p:inputText>
 	        </div>

@@ -9,7 +9,8 @@
 	<class>com.ray.entities.Pessoa</class>
 	<class>com.ray.entities.User</class>
 	<class>com.ray.entities.Lancamento</class>
-		
+	<class>com.ray.entities.Estado</class>
+	<class>com.ray.entities.Cidade</class>
 		<properties>
 			
 			<!-- DRIVER MYSQL -->

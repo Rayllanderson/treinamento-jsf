@@ -29,7 +29,7 @@ public class Pessoa implements Serializable{
     private Sexo sexo;
 
     @Temporal(TemporalType.DATE) //quero apenas a data
-    private Date dataNascimento = new Date();
+    private Date dataNascimento;
 
     private String [] frameworks;
     
@@ -37,7 +37,7 @@ public class Pessoa implements Serializable{
     
     private String cep;
     
-    @SerializedName(value = "localidade")
+    
     private String cidade;
     
     @SerializedName(value = "uf")

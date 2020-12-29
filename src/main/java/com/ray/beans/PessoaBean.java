@@ -107,8 +107,6 @@ public class PessoaBean implements Serializable{
 	    Pessoa gsonAux = new Gson().fromJson(jsonCep.toString(), Pessoa.class);
 	    this.pessoa.setEstado(gsonAux.getEstado());
 	    this.pessoa.setCidade(gsonAux.getCidade());
-	    System.out.println(gsonAux.getEstado());
-	    System.out.println(pessoa.getCidade());
 	    
 	}catch (Exception ex) {
 	    ex.printStackTrace();

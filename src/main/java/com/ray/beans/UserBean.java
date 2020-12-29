@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import com.ray.dao.GenericDao;
 import com.ray.entities.User;
@@ -44,7 +45,11 @@ public class UserBean implements Serializable {
     public String logout() {
 	FacesContext context = FacesContext.getCurrentInstance();
 	ExternalContext externalContext = context.getExternalContext();
-	externalContext.getSessionMap().put("user", null);
+	externalContext.getSessionMap().remove("user");
+	
+	HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+	request.getSession().invalidate();
+	
 	showMessage("Adeus");
 	return "login.xhtml";
     }
